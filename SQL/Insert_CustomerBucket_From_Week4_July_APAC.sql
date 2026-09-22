@@ -8,11 +8,9 @@ SELECT
     src.Bucket AS CustomerBucket
 FROM (
     VALUES
-        ('HOYO ELECTRONICS CO., LIMITED', 'R78940', 'APAC', 'Electronics'),
-        ('SHENZHENSHI XINGHUO MAOYI YOUXIAN GONGSI', 'R78875', 'CHINA', 'Electronics'),
-        ('SUZHOU YIANGTUO ELECTRONICS CO., LTD.', 'R78880', 'CHINA', 'Electronics'),
-        ('BEIJING FUCHANG XINCHENG ELECTRONICS', 'R78900', 'CHINA', 'Electronics'),
-        ('YINLI (SHENZHEN) TECHNOLOGY CO., LTD.', 'R78950', 'CHINA', 'Electronics')
+        ('VIET ELECTRONIC TECHNOLOGY SOLUTIONS CO', 'R79075', 'APAC', 'Electronics'),
+        ('SHANGHAI GONGBANGBANG IND TECH CO', 'R78890', 'CHINA', 'Electronics'),
+        ('SHANGHAI WOSHI ELECTRONICS CO., LTD', 'R79140', 'CHINA', 'Electronics')
 ) AS src (CustomerName, CustomerNumber, Region, Bucket)
 INNER JOIN Dimension.Dim_Customer dc
     ON dc.CustomerNumber = src.CustomerNumber
@@ -50,11 +48,9 @@ SELECT
     src.Bucket AS CustomerBucket
 FROM (
     VALUES
-        ('HOYO ELECTRONICS CO., LIMITED', 'R78940', 'APAC', 'Electronics'),
-        ('SHENZHENSHI XINGHUO MAOYI YOUXIAN GONGSI', 'R78875', 'CHINA', 'Electronics'),
-        ('SUZHOU YIANGTUO ELECTRONICS CO., LTD.', 'R78880', 'CHINA', 'Electronics'),
-        ('BEIJING FUCHANG XINCHENG ELECTRONICS', 'R78900', 'CHINA', 'Electronics'),
-        ('YINLI (SHENZHEN) TECHNOLOGY CO., LTD.', 'R78950', 'CHINA', 'Electronics')
+        ('VIET ELECTRONIC TECHNOLOGY SOLUTIONS CO', 'R79075', 'APAC', 'Electronics'),
+        ('SHANGHAI GONGBANGBANG IND TECH CO', 'R78890', 'CHINA', 'Electronics'),
+        ('SHANGHAI WOSHI ELECTRONICS CO., LTD', 'R79140', 'CHINA', 'Electronics')
 ) AS src (CustomerName, CustomerNumber, Region, Bucket)
 INNER JOIN Dimension.Dim_Customer dc
     ON dc.CustomerNumber = src.CustomerNumber
@@ -72,3 +68,8 @@ GROUP BY
     src.CustomerNumber,
     src.Region,
     src.Bucket;
+
+-- After update check
+select  t.Region, t.CustomerNumber, t.CustomerBucket
+from dbo.CustomerBucket t
+where t.CustomerNumber = 'R79140' and t.Region='CHINA'
